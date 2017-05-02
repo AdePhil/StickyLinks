@@ -1,0 +1,193 @@
+html {
+    box-sizing: border-box;
+    background:#ffc600;
+    min-height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Futura,"Trebuchet MS",Arial,sans-serif
+  }
+  header h1{
+    color: #333;
+  }
+.wrapper{
+    max-width:532px;
+    min-width: 400px;
+    margin:50px auto;
+    background:white;
+    border-radius:5px;
+    box-shadow:10px 10px 0 rgba(0,0,0,0.1);
+    padding:20px;
+}
+h2 {
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-weight: 200;
+  }
+  .links {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    list-style: none;
+  }
+
+
+  .links li:nth-of-type(1){
+    border-top: 1px solid  #D1E2FF;
+    border-top-right-radius:3px;
+    border-top-left-radius: 3px;
+  }
+
+  .links li:last-child{
+    border-bottom-right-radius:3px;
+    border-bottom-left-radius: 3px;
+  }
+
+
+  .links li {
+    position: relative;
+    display:flex;
+    align-items:center;
+    border-left: 1px solid  #D1E2FF;
+    border-right: 1px solid  #D1E2FF;
+    border-bottom: 1px solid  #D1E2FF;
+  }
+
+
+
+  .links-heading{
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+    border:none;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .links label{
+    margin:0;
+    padding:10px 25px 10px 8px;
+    transition:background 0.2s;
+    flex:1;
+    font-family:'brandon grotesque';
+    font-size: 14px;
+    font-weight: 400;
+    border-left: 1px solid #D1E2FF;
+    cursor:text;
+    overflow: hidden;
+
+  }
+  .add-items {
+    margin-top: 20px;
+  }
+
+  .add-items input {
+    padding:10px;
+    outline:0;
+    border:1px solid rgba(0,0,0,0.1);
+  }
+    .add-items input[type="text"] {
+      border:1px solid rgba(0,0,0,0.2);
+    }
+  form > div{
+    margin-top:15px;
+  }
+  .delete-all{
+    background-color: #cc0000;
+    color:white;
+  }
+  .links li:hover .options{
+    display: flex;
+  }
+  .options{
+    position: absolute;
+    font-size:13px;
+    width:21px;
+    height:21px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    color:#fff;
+    display: none;
+  }
+
+  .fa-external-link{
+    top:0;
+    right:0;
+    background-color: #00cc00;
+    margin-right: 23px;
+  }
+  .fa-close{
+    top:0;
+    right:0;
+    background-color: #cc0000;
+    border-top-right-radius:3px;
+  }
+
+  input[type="submit"], input[type="button"]{
+    cursor: pointer;
+  }
+  .fa-star{
+    position: relative;
+    font-size: 20px;
+    display: block;
+    margin: 10px 12px;
+    color:#ccc;
+  }
+
+  [data-star^="star"]::after{
+    position: absolute;
+    color:#00cc00;
+    content: '\f005';
+    font-family: FontAwesome;
+    width: 0%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+  }
+
+img{
+  width: 50px;
+  height: 50px;
+}
+
+.input-group{
+  position: relative;
+}
+.error{
+  width: 200px;
+  height: 40px;
+  background: #fff;
+  position: absolute;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  top: calc(100% + 8px);
+  right: 30%;
+  z-index: 100;
+  box-shadow: 0px 1px rgba(0,0,0,0.1);
+  font-size: 15px;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  padding: 2px 4px;
+  font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+  display: none;
+}
+.error::before{
+  content:"";
+  position: absolute;
+  left: 5px;
+  top: -8px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid #ccc;
+}
+
+.error .fa{
+  margin-right: 5px;
+  color: #cc0000;
+}
