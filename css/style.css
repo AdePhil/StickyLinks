@@ -1,25 +1,28 @@
 html {
     box-sizing: border-box;
     background:#ffc600;
-    min-height:100vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: Futura,"Trebuchet MS",Arial,sans-serif
+    font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+    font-size: 62.8%;
+  }
+  body{
+    font-size: 1.6rem;
+    text-align:center;
   }
   header h1{
     color: #333;
+    font-size: 3.2rem;
+    margin-top: 40px;
   }
 .wrapper{
     max-width:532px;
-    min-width: 400px;
+    min-width: 200px;
     margin:50px auto;
     background:white;
     border-radius:5px;
     box-shadow:10px 10px 0 rgba(0,0,0,0.1);
     padding:20px;
 }
+
 h2 {
     text-align: center;
     margin: 0 0 20px 0;
@@ -48,6 +51,7 @@ h2 {
   .links li {
     position: relative;
     display:flex;
+    flex-wrap: wrap;
     align-items:center;
     border-left: 1px solid  #D1E2FF;
     border-right: 1px solid  #D1E2FF;
@@ -60,7 +64,7 @@ h2 {
     margin-bottom: 10px;
     padding-bottom: 3px;
     border:none;
-    font-size: 18px;
+    font-size: 1.8rem;
     text-align: center;
   }
 
@@ -70,7 +74,7 @@ h2 {
     transition:background 0.2s;
     flex:1;
     font-family:'brandon grotesque';
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 400;
     border-left: 1px solid #D1E2FF;
     cursor:text;
@@ -129,7 +133,7 @@ h2 {
   }
   .fa-star{
     position: relative;
-    font-size: 20px;
+    font-size: 2.0rem;
     display: block;
     margin: 10px 12px;
     color:#ccc;
