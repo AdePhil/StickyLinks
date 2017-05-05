@@ -8,7 +8,7 @@ html {
     font-size: 1.6rem;
     text-align:center;
   }
-  header h1{
+   h1{
     color: #333;
     font-size: 3.2rem;
     margin-top: 40px;
@@ -194,4 +194,8 @@ img{
 .error .fa{
   margin-right: 5px;
   color: #cc0000;
+}
+.multiple-link-error{
+   color: #cc0000;
+   display: none;
 }

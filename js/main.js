@@ -5,8 +5,9 @@ const uncheckAll = document.querySelector('.uncheck-all');
 const deleteAll = document.querySelector('.delete-all');
 const linkTextBox = document.querySelector('[name=linkTxt]');
 const error = document.querySelector('.error');
+const multipleLinksError = document.querySelector('.multiple-link-error');
 let links =  JSON.parse(localStorage.getItem('links')) || [];
-const starIncrement = 20;
+const starIncrement = 20; //in percentage
 
 
 
@@ -18,13 +19,22 @@ function isURL(str) {
 
 //add a link
 function addItem(e){
+
+
   e.preventDefault();
   const text = linkTextBox.value;
-  if(!isURL(text)){
-    reportError();
+  const linkIsAlreadyPresent = links.some(link=> (link.text == text));
+
+  //exit if link is already present
+  if(linkIsAlreadyPresent){
+    reportLinkRepeatError();
     return;
   }
-  console.log(text);
+
+  if(!isURL(text)){
+    reportInvalidLinkError();
+    return;
+  }
   const link = {
     text,
     timesClicked: 0
@@ -37,7 +47,7 @@ function addItem(e){
 }
 
 //report error not a link
-function reportError(){
+function reportInvalidLinkError(){
 
   error.style.display ='flex';
   setTimeout(()=>{
@@ -45,6 +55,12 @@ function reportError(){
   },1500);
 
 }
+
+//report link repeat error
+function reportLinkRepeatError(){
+  multipleLinksError.style.display='block';
+}
+
 //display the links
 function populateLinks(links=[],linksList){
   linksList.innerHTML = links.map((link,i)=>{
@@ -75,17 +91,15 @@ function handleLinkEvents(e){
         const span = e.target;
         const index =  span.dataset.index;
         const star = document.querySelector(`[data-star=star${index}]`);
-        console.log(star);
 
-        //copy link to clipboard
-        if(span.classList.contains('fa-copy')){console.log("Link copied: ",links[index].text);}
+
         //delete a link
         if(span.classList.contains('fa-close')){
            links.splice(index,1);
           localStorage.setItem('links',JSON.stringify(links));
            populateLinks(links,linksList);
-          console.table(links);
         }
+
         //open the link on a new tab
         if(span.classList.contains('fa-external-link')){
           var a = document.createElement('a');
@@ -110,11 +124,12 @@ function starRating(index,starIncrement){
   document.styleSheets[1].addRule(`[data-star=star${index}]::after`, `width:${starPer}%`);
 }
 
+//click on tthe add links button or enter
 addItems.addEventListener('submit',addItem);
 linksList.addEventListener('click',handleLinkEvents);
-
+linkTextBox.addEventListenergjb
+//delete all links
 deleteAll.addEventListener('click',()=>{
-  console.log('hey');
   linksList.innerHTML='';
   links = [];
   localStorage.removeItem('links');
@@ -122,8 +137,33 @@ deleteAll.addEventListener('click',()=>{
 
 populateLinks(links,linksList);
 
+//clean up
+
 //hide error on click
 const html = document.querySelector('html');
 html.addEventListener('click',()=>{
   error.style.display = 'none';
 });
+
+//clear the multiple link error report
+linkTextBox.addEventListener('focus',()=>{
+  if(multipleLinksError.style.display.includes('block')) {
+    multipleLinksError.style.display = 'none';
+  }
+
+
+});
+
+//check the text in the textbox with every keystroke
+linkTextBox.addEventListener('keydown',checkIfLinkIsValid);
+linkTextBox.addEventListener('keyup',checkIfLinkIsValid);
+
+function checkIfLinkIsValid(){
+    let text = linkTextBox.value.trim();
+    if(text =="") {
+      linkTextBox.style.borderColor = "rgba(0, 0, 0, 0.2)";
+    }else{
+      linkTextBox.style.borderColor = (!isURL(text)) ? "#cc0000" : "rgba(0, 0, 0, 0.2)";
+    }
+
+}
