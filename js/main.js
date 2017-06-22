@@ -65,7 +65,7 @@ function reportLinkRepeatError(){
 function populateLinks(links=[],linksList){
   linksList.innerHTML = links.map((link,i)=>{
     return `
-    <li>
+    <li class = "items">
     <span class="fa fa-star  " data-star=star${i}></span>
     <label for="item${i}">${link.text}</label>
     <span data-index=${i} class="fa fa-close options"></span>
@@ -166,4 +166,11 @@ function checkIfLinkIsValid(){
       linkTextBox.style.borderColor = (!isURL(text)) ? "#cc0000" : "rgba(0, 0, 0, 0.2)";
     }
 
+}
+
+//service worker
+if("serviceWorker" in navigator){
+  navigator.serviceWorker
+  .register("./sw.js")
+  .then(function(){console.log("Service Worker Active");})
 }
