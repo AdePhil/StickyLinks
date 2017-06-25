@@ -222,3 +222,8 @@ img {
   color: #cc0000;
   display: none;
 }
+
+.items:hover{
+  background-color: beige;
+  backface-visibility: hidden;
+}
