@@ -106,15 +106,13 @@ form>div {
   color: white;
 }
 
-/*.links li:hover .options {
-  display: flex;
-}*/
-.triger-enter{
-  display: flex;
+.links .items:hover .options {
+    display: flex;
+    animation: fadeIn 800ms ease forwards;
 }
-.triger-enter-active{
-  opacity: 1;
-}
+
+
+
 .options {
   position: absolute;
   font-size: 13px;
@@ -224,6 +222,12 @@ img {
 }
 
 .items:hover{
-  background-color: beige;
+  background-color: #f5f5dc;
   backface-visibility: hidden;
+}
+
+
+@keyframes fadeIn{
+  0%{opacity:0;}
+  100%{opacity:1;}
 }
